@@ -409,7 +409,7 @@ main {
 
 .hero-left-2 li:nth-child(2),
 .hero-left-2 li:nth-child(3) {
-    color: var(--theme-accent);
+    color: orange;
     animation-delay: .5s;
 }
 
@@ -484,7 +484,7 @@ main {
 }
 
 .stars {
-    color: var(--theme-accent);
+    color: orange;
     font-size: 17px;
     letter-spacing: 1px;
 }
