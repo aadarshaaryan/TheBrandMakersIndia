@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,59 +11,133 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-        <nav>
-
+    <!-- SINGLE TOP FLOATING HEADER (HIGHEST Z-INDEX) -->
+    <header id="site-header">
+        <nav class="main-nav">
             <a href="#" class="logo">
                 <img src="thebrandsmaerindia_logo.png" alt="BrandsMaster">
             </a>
 
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation"
-                aria-expanded="false">
-                MENU
-
-                <span class="menu-icon">
-                    <i></i>
-                    <i></i>
+            <!-- Toggle switches between MENU and CLOSE -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="btn-text">MENU</span>
+                <span class="btn-icon">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
                 </span>
             </button>
 
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+            <!-- Desktop Links -->
+            <ul class="desktop-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
 
             <div class="contact_now">
                 <a href="https://wa.me/917417256721?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services.">Contact Now <span>↗</span></a>
             </div>
-
         </nav>
     </header>
 
 
+    <!-- 3-LAYER SIDEBAR DRAWER -->
+    <div class="drawer-container" id="drawer-container">
+        <!-- Backdrop Blur Overlay -->
+        <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+        <!-- Layer 1: Leading Accent Blue Strip -->
+        <div class="drawer-layer layer-1"></div>
+
+        <!-- Layer 2: Intermediate Deep Indigo Sheet -->
+        <div class="drawer-layer layer-2"></div>
+
+        <!-- Layer 3: Main Menu Panel -->
+        <div class="drawer-layer layer-3">
+            <div class="drawer-inner">
+                
+                <!-- Secondary Logo & Index Row -->
+                <div class="sm-panel-header">
+                    <a class="sm-panel-logo" href="#">
+                        <img src="thebrandsmaerindia_logo.png" alt="BrandsMaster">
+                    </a>
+                    <span class="sm-panel-index">MENU / 01</span>
+                </div>
+
+                <!-- Navigation List -->
+                <nav class="sm-navigation" aria-label="Mobile Navigation">
+                    <ul class="sm-menu-list">
+                        <li class="sm-menu-item" style="--i: 1">
+                            <a href="#home">
+                                <span class="sm-item-number">01</span>
+                                <span class="sm-item-label">Home</span>
+                                <span class="sm-item-arrow">↗</span>
+                            </a>
+                        </li>
+
+                        <li class="sm-menu-item" style="--i: 2">
+                            <a href="#portfolio">
+                                <span class="sm-item-number">02</span>
+                                <span class="sm-item-label">Portfolio</span>
+                                <span class="sm-item-arrow">↗</span>
+                            </a>
+                        </li>
+
+                        <li class="sm-menu-item active" style="--i: 3">
+                            <a href="#services">
+                                <span class="sm-item-number">03</span>
+                                <span class="sm-item-label">Services</span>
+                                <span class="sm-item-arrow">↗</span>
+                            </a>
+                        </li>
+
+                        <li class="sm-menu-item" style="--i: 4">
+                            <a href="#about">
+                                <span class="sm-item-number">04</span>
+                                <span class="sm-item-label">About</span>
+                                <span class="sm-item-arrow">↗</span>
+                            </a>
+                        </li>
+
+                        <li class="sm-menu-item" style="--i: 5">
+                            <a href="#contact">
+                                <span class="sm-item-number">05</span>
+                                <span class="sm-item-label">Contact</span>
+                                <span class="sm-item-arrow">↗</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sm-panel-divider"></div>
+
+                <!-- Footer -->
+                <div class="sm-panel-footer">
+                    <span>LET'S BUILD SOMETHING GREAT</span>
+                    <span class="sm-footer-dot"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <main>
-
         <div class="hero-div-w">
-
             <div class="hero-div-1">
-
                 <div class="hero-left-inside">
-
                     <div class="hero-left-1">
                         <span>●</span>
                         COMPLETE BRANDING SOLUTIONS
                     </div>
-
 
                     <div class="hero-left-2">
                         <ul>
@@ -74,7 +147,6 @@
                         </ul>
                     </div>
 
-
                     <div class="hero-left-3">
                         From logos and brand identity to social media,
                         packaging and pitch decks — BrandsMaster
@@ -82,14 +154,12 @@
                         to look professional, memorable and ready to grow.
                     </div>
 
-
-                    <a href="https://wa.me/917417256721?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services." class="hero-left-4">
+                    <a href="https://wa.me/917417256721?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services."
+                        class="hero-left-4">
                         Build My Brand <span>↗</span>
                     </a>
 
-
                     <div class="hero-left-5">
-
                         <div class="avatar-stack">
                             <span>SC</span>
                             <span>MW</span>
@@ -101,29 +171,21 @@
                             <div class="stars">★★★★★</div>
                             <p>Trusted by 10,000+ founders</p>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
 
             <div class="hero-div-2">
                 <img src="hero_image.png" alt="BrandsMaster Mascot">
             </div>
-
         </div>
-
     </main>
 
-
     <div class="test_para">
-        Test para ipsum dolor sit amet, consectetur adipisicing elit. Eum non minus possimus sapiente labore consectetur obcaecati, enim eius laborum fugiat, velit error numquam tempora nisi, esse nam ratione. Iusto voluptate eaque facilis libero consequatur at? Vel beatae maxime voluptatibus minima ipsum deserunt consequuntur sint unde vero dolorem aperiam explicabo delectus quo iste quisquam impedit, cupiditate corrupti omnis necessitatibus inventore ea, quia sed temporibus nemo. Similique animi repellendus consequuntur ab ex modi quod inventore id dolore nam vero corrupti eveniet ad, ipsam totam accusamus eaque possimus cupiditate voluptate quis, saepe, tenetur rerum rem. Aut accusamus eum repudiandae consectetur pariatur, praesentium aliquid nihil vitae ab, error nesciunt quidem? Voluptatum veniam nulla magni consectetur. Dignissimos, veniam! Pariatur ipsam omnis molestiae fugiat veritatis nemo rerum aliquam quibusdam eum eaque. Repellat voluptas minus blanditiis nemo officiis atque, in corrupti saepe nulla optio quo consequatur omnis illo mollitia natus dignissimos quasi, a possimus. Perferendis aliquid delectus aut nam dolorem sapiente, tenetur expedita voluptas maxime culpa cumque voluptatibus quisquam temporibus officia magnam in vitae obcaecati soluta, nulla eum ipsa cum nobis. Ratione vero explicabo illum nesciunt minima ad quo quibusdam quisquam dolorem in. Cupiditate quam possimus beatae fugiat facilis cum perferendis molestiae, quo iusto ad, obcaecati laudantium sed sint ut similique, necessitatibus nostrum error rem expedita libero assumenda itaque ipsam culpa saepe. Eos error porro molestias provident accusamus mollitia expedita, delectus fuga ad minima nobis culpa laborum iusto libero debitis natus adipisci distinctio. Minus blanditiis expedita et quia. Praesentium, libero recusandae exercitationem consectetur harum debitis sit accusantium totam, earum vero cumque, explicabo consequuntur. Similique, neque sed nemo ipsum eos, fuga cupiditate tenetur temporibus est perspiciatis consectetur rerum at porro itaque. Est maxime delectus, quos ut quia nam explicabo, tenetur fuga odit doloribus deserunt minus adipisci veniam laborum odio officia sequi eius id totam sapiente molestiae in. Porro fugiat illum ea, reprehenderit reiciendis dolor impedit itaque rem, laboriosam voluptate autem a doloremque facilis beatae id tenetur quasi. Ut reiciendis harum illo quas labore. Inventore culpa tempore, consequatur, iure corporis nihil repellendus enim officiis in voluptas minima adipisci qui eligendi provident molestiae deserunt perferendis error asperiores cupiditate dignissimos, ut totam? Officiis quae debitis aspernatur laborum voluptatibus. Inventore consequuntur non corporis ea ipsam eveniet. At illo excepturi pariatur et odit ab voluptas, optio dignissimos necessitatibus eum asperiores facilis. Tempora earum omnis quo eum iste exercitationem quam recusandae, in aliquam saepe, veniam ut porro? Reprehenderit modi, labore sunt similique deserunt totam voluptatum esse asperiores facere debitis! Minima non dolores, ullam architecto sunt tempora consequatur, et libero earum facilis enim obcaecati eaque beatae ipsam amet ratione labore minus. Mollitia, repellat non quaerat ullam, consequuntur iure ipsam sed similique nam aspernatur explicabo numquam nostrum aut quas optio inventore esse, officia id ipsa magnam maxime! Libero quos id dignissimos quibusdam, quia autem atque alias incidunt sequi, ab debitis labore aspernatur mollitia quaerat totam blanditiis hic vel corrupti suscipit, vitae nihil cum! Illum eum, aliquam, vel culpa maxime ipsum quia assumenda sequi numquam hic similique, corrupti excepturi. Voluptatibus placeat, tempora obcaecati eius a aspernatur culpa.
+        Test para ipsum dolor sit amet, consectetur adipisicing elit. Eum non minus possimus sapiente labore consectetur
+        obcaecati, enim eius laborum fugiat, velit error numquam tempora nisi, esse nam ratione.
     </div>
 
-
     <script src="script.js"></script>
-
 </body>
 </html>
