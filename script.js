@@ -1,9 +1,45 @@
+const preloader = document.getElementById("preloader");
+const preloaderBar = document.getElementById("preloader-bar");
+const preloaderPercent = document.getElementById("preloader-percent");
+
+let progress = 0;
+const loadInterval = setInterval(() => {
+    progress += Math.floor(Math.random() * 18) + 12;
+    if (progress >= 100) {
+        progress = 100;
+        clearInterval(loadInterval);
+
+        if (preloaderBar) preloaderBar.style.width = "100%";
+        if (preloaderPercent) preloaderPercent.textContent = "100%";
+
+        setTimeout(() => {
+            if (preloader) preloader.classList.add("fade-out");
+        }, 320);
+    } else {
+        if (preloaderBar) preloaderBar.style.width = `${progress}%`;
+        if (preloaderPercent) preloaderPercent.textContent = `${progress}%`;
+    }
+}, 45);
+
+window.addEventListener("load", () => {
+    if (progress < 100) {
+        progress = 100;
+        clearInterval(loadInterval);
+        if (preloaderBar) preloaderBar.style.width = "100%";
+        if (preloaderPercent) preloaderPercent.textContent = "100%";
+        setTimeout(() => {
+            if (preloader) preloader.classList.add("fade-out");
+        }, 250);
+    }
+});
+
+
 const header = document.getElementById("site-header");
 const menuToggle = document.getElementById("menu-toggle");
 const btnText = menuToggle ? menuToggle.querySelector(".btn-text") : null;
 const drawerContainer = document.getElementById("drawer-container");
 const backdrop = document.getElementById("drawer-backdrop");
-const navLinks = document.querySelectorAll(".sm-menu-item a");
+const navLinks = document.querySelectorAll(".sm-menu-item a, .desktop-menu a");
 const menuItems = document.querySelectorAll(".sm-menu-item");
 
 function updateHeader() {
@@ -43,10 +79,22 @@ if (menuToggle) {
 if (backdrop) backdrop.addEventListener("click", closeDrawer);
 
 navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        menuItems.forEach(item => item.classList.remove("active"));
-        link.closest(".sm-menu-item").classList.add("active");
-        closeDrawer();
+    link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+            e.preventDefault();
+            const targetEl = document.querySelector(href);
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        const parentItem = link.closest(".sm-menu-item");
+        if (parentItem) {
+            menuItems.forEach(item => item.classList.remove("active"));
+            parentItem.classList.add("active");
+            closeDrawer();
+        }
     });
 });
 
@@ -57,7 +105,6 @@ document.addEventListener("keydown", (e) => {
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768 && drawerContainer.classList.contains("open")) closeDrawer();
 });
-
 
 
 const servicesData = [
@@ -159,17 +206,19 @@ let width = container.clientWidth;
 let height = container.clientHeight;
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-camera.position.set(0, 0, 5.6);
+const isMobile = window.innerWidth <= 768;
+
+const camera = new THREE.PerspectiveCamera(isMobile ? 50 : 54, width / height, 0.1, 1000);
+camera.position.set(0, 0, isMobile ? 5.2 : 3.65); // Brought close for prominent scale
 
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 renderer.setSize(width, height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-const cylinderRadius = 5.8;
+const cylinderRadius = isMobile ? 4.8 : 6.6;
 const cardWidthAngle = (2 * Math.PI) / totalCards;
-const cardHeight = 3.6;    // Increased from 2.65 for bold visibility
-const arcCoverage = cardWidthAngle * 0.90;
+const cardHeight = isMobile ? 2.85 : 3.7; // Wide landscape height
+const arcCoverage = cardWidthAngle * 0.94;
 
 function createCardTexture(data) {
     const texCanvas = document.createElement("canvas");
@@ -183,7 +232,7 @@ function createCardTexture(data) {
     ctx.fill();
 
     ctx.lineWidth = 4;
-    ctx.strokeStyle = "rgba(47, 92, 255, 0.4)";
+    ctx.strokeStyle = "rgba(47, 92, 255, 0.45)";
     ctx.stroke();
 
     let accentGrad = ctx.createLinearGradient(740, 40, 1140, 700);
@@ -284,7 +333,7 @@ servicesData.forEach((data, index) => {
         cylinderRadius,
         cylinderRadius,
         cardHeight,
-        32,
+        36,
         1,
         true,
         -arcCoverage / 2,
@@ -295,7 +344,7 @@ servicesData.forEach((data, index) => {
         map: createCardTexture(data),
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.85
+        opacity: 0.9
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -305,7 +354,7 @@ servicesData.forEach((data, index) => {
     cardMeshes.push(mesh);
 });
 
-cylinderGroup.position.set(0, 0.25, -cylinderRadius);
+cylinderGroup.position.set(0, isMobile ? 0.05 : 0.05, -cylinderRadius);
 
 let targetTheta = - 2 * cardWidthAngle;
 let currentTheta = targetTheta;
@@ -324,7 +373,7 @@ function updateActiveInfo(newIndex) {
         activeDesc.textContent = data.desc;
         serviceOrderBtn.href = `https://wa.me/917417256721?text=Hello%2C%20I%20am%20interested%20in%20${encodeURIComponent(data.title)}`;
         activeInfoBox.classList.remove("fade");
-    }, 150);
+    }, 140);
 }
 
 function onScroll() {
@@ -370,7 +419,6 @@ canvas.addEventListener("mousemove", (e) => {
     if (intersects.length > 0) {
         const hit = intersects[0];
         const uv = hit.uv;
-
         const isOverButton = (uv.x >= 0.05 && uv.x <= 0.32 && uv.y >= 0.08 && uv.y <= 0.22);
         
         if (isOverButton) {
@@ -395,7 +443,6 @@ canvas.addEventListener("click", (e) => {
         const hit = intersects[0];
         const clickedIndex = hit.object.userData.index;
         const uv = hit.uv;
-
         const isOverButton = (uv.x >= 0.05 && uv.x <= 0.32 && uv.y >= 0.08 && uv.y <= 0.22);
 
         if (isOverButton) {
@@ -471,8 +518,13 @@ animate();
 window.addEventListener("resize", () => {
     width = container.clientWidth;
     height = container.clientHeight;
+    
+    const mobile = window.innerWidth <= 768;
+    camera.fov = mobile ? 50 : 54;
+    camera.position.z = mobile ? 5.2 : 3.65;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+
     renderer.setSize(width, height);
     onScroll();
 });
