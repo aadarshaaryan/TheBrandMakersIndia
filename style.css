@@ -25,9 +25,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ========================================================
-   TOP FIXED HEADER (HIGHEST Z-INDEX ON MOBILE & DESKTOP)
-   ======================================================== */
 
 header#site-header {
     background-color: var(--theme-main);
@@ -36,7 +33,7 @@ header#site-header {
     font-weight: 600;
     position: sticky;
     top: 0;
-    z-index: 100000; /* Stays above the sidebar and overlay at all times */
+    z-index: 100000; 
     transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -96,9 +93,6 @@ ul.desktop-menu a:hover {
 }
 
 
-/* ========================================================
-   3-LAYER SIDEBAR DRAWER SYSTEM
-   ======================================================== */
 
 .drawer-container {
     position: fixed;
@@ -108,18 +102,18 @@ ul.desktop-menu a:hover {
     z-index: 99990;
     pointer-events: none;
     visibility: hidden;
-    /* Delays visibility: hidden until the 0.55s slide-out finishes */
+    
     transition: visibility 0.55s ease;
 }
 
 .drawer-container.open {
     visibility: visible;
     pointer-events: auto;
-    /* When opening, become visible immediately */
+    
     transition: none;
 }
 
-/* Background overlay */
+
 .drawer-backdrop {
     position: absolute;
     inset: 0;
@@ -134,7 +128,7 @@ ul.desktop-menu a:hover {
     opacity: 1;
 }
 
-/* Layer Shared Specs */
+
 .drawer-layer {
     position: absolute;
     top: 0;
@@ -144,7 +138,7 @@ ul.desktop-menu a:hover {
     will-change: transform;
 }
 
-/* Layer 1: Leading Electric Blue Accent Strip */
+
 .drawer-layer.layer-1 {
     width: min(456px, 100%);
     background: linear-gradient(180deg, #3d71ff 0%, #1738c6 100%);
@@ -152,7 +146,7 @@ ul.desktop-menu a:hover {
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Layer 2: Deep Indigo Secondary Sheet */
+
 .drawer-layer.layer-2 {
     width: min(448px, 100%);
     background: #060b29;
@@ -161,7 +155,7 @@ ul.desktop-menu a:hover {
     transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Layer 3: Main Content Panel */
+
 .drawer-layer.layer-3 {
     width: min(440px, 100%);
     background:
@@ -175,7 +169,7 @@ ul.desktop-menu a:hover {
     transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Open Animation: Staggered Slide In */
+
 .drawer-container.open .drawer-layer.layer-1 {
     transform: translateX(0);
 }
@@ -188,16 +182,16 @@ ul.desktop-menu a:hover {
     transition-delay: 0.08s;
 }
 
-/* Content inside Layer 3 */
+
 .drawer-inner {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 100px 26px 26px; /* 100px top padding ensures spacing below the header */
+    padding: 100px 26px 26px; 
     box-sizing: border-box;
 }
 
-/* Sub-Header Index Row */
+
 .sm-panel-header {
     display: flex;
     justify-content: space-between;
@@ -229,7 +223,7 @@ ul.desktop-menu a:hover {
     letter-spacing: 2px;
 }
 
-/* Navigation List */
+
 .sm-navigation {
     display: block !important;
     width: 100% !important;
@@ -251,7 +245,7 @@ ul.desktop-menu a:hover {
     transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* Staggered link reveal when opening */
+
 .drawer-container.open .sm-menu-item {
     opacity: 1;
     transform: translateY(0);
@@ -290,7 +284,7 @@ ul.desktop-menu a:hover {
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
-/* Active Highlight */
+
 .sm-menu-item.active .sm-item-label,
 .sm-menu-item.active .sm-item-arrow {
     color: var(--theme-accent-bright);
@@ -341,9 +335,6 @@ ul.desktop-menu a:hover {
 }
 
 
-/* ========================================================
-   HERO & PAGE SECTIONS
-   ======================================================== */
 
 main {
     background: var(--theme-main);
@@ -522,7 +513,7 @@ main {
     padding: 40px;
 }
 
-/* Animations */
+
 @keyframes tag-drop {
     0% {
         opacity: 0;
@@ -555,9 +546,6 @@ main {
 }
 
 
-/* ========================================================
-   RESPONSIVE (MOBILE & TABLET)
-   ======================================================== */
 
 @media (max-width: 768px) {
     header#site-header {
@@ -571,7 +559,7 @@ main {
         top: 12px;
     }
 
-    /* While drawer is open, keep the floating header styled seamlessly */
+    
     body.menu-active header#site-header {
         background: rgba(4, 7, 30, 0.94);
         border-color: rgba(47, 92, 255, 0.35);
@@ -588,7 +576,7 @@ main {
         height: 60px;
     }
 
-    /* THE SINGLE TOGGLE BUTTON */
+    
     .menu-toggle {
         display: inline-flex;
         align-items: center;
@@ -637,7 +625,7 @@ main {
         transform: translateY(2.5px);
     }
 
-    /* Transformed state when drawer is active */
+    
     body.menu-active .menu-toggle {
         background: #070c2a;
         border-color: rgba(47, 92, 255, 0.45);
@@ -651,20 +639,20 @@ main {
         transform: rotate(-45deg);
     }
 
-    /* Hide desktop nav */
+    
     ul.desktop-menu,
     .contact_now {
         display: none !important;
     }
 
-    /* Layer sizing on mobile phones */
+    
     .drawer-layer.layer-1,
     .drawer-layer.layer-2,
     .drawer-layer.layer-3 {
         width: 100%;
     }
 
-    /* Hero Responsive */
+    
     main {
         height: auto;
         min-height: 0;

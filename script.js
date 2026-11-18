@@ -6,7 +6,6 @@ const backdrop = document.getElementById("drawer-backdrop");
 const navLinks = document.querySelectorAll(".sm-menu-item a");
 const menuItems = document.querySelectorAll(".sm-menu-item");
 
-// Dynamic header background on scroll
 function updateHeader() {
     if (document.body.classList.contains("menu-active")) return;
 
@@ -24,7 +23,6 @@ window.addEventListener("resize", updateHeader);
 updateHeader();
 
 
-// OPEN & CLOSE FUNCTIONS
 
 function openDrawer() {
     drawerContainer.classList.add("open");
@@ -32,7 +30,6 @@ function openDrawer() {
     document.body.style.overflow = "hidden";
     menuToggle.setAttribute("aria-expanded", "true");
     
-    // Switch single button to CLOSE
     if (btnText) {
         btnText.textContent = "CLOSE";
     }
@@ -44,14 +41,12 @@ function closeDrawer() {
     document.body.style.overflow = "";
     menuToggle.setAttribute("aria-expanded", "false");
     
-    // Switch single button back to MENU
     if (btnText) {
         btnText.textContent = "MENU";
     }
     updateHeader();
 }
 
-// Single header button click toggles state
 if (menuToggle) {
     menuToggle.addEventListener("click", () => {
         if (drawerContainer.classList.contains("open")) {
@@ -62,12 +57,10 @@ if (menuToggle) {
     });
 }
 
-// Backdrop click closes drawer
 if (backdrop) {
     backdrop.addEventListener("click", closeDrawer);
 }
 
-// Link click updates active item and closes drawer smoothly
 navLinks.forEach(link => {
     link.addEventListener("click", () => {
         menuItems.forEach(item => item.classList.remove("active"));
@@ -76,14 +69,12 @@ navLinks.forEach(link => {
     });
 });
 
-// ESC key closes drawer
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && drawerContainer.classList.contains("open")) {
         closeDrawer();
     }
 });
 
-// Close drawer if window is resized above 768px
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768 && drawerContainer.classList.contains("open")) {
         closeDrawer();
